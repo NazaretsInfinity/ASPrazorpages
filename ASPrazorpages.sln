@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35913.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPrazorpages", "ASPrazorpages\ASPrazorpages.csproj", "{3DB27BA0-F4C5-403A-A284-58D512D9635C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorASP", "CalculatorASP\CalculatorASP.csproj", "{FBEADF76-2421-4597-B98E-D096DC5E5462}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3DB27BA0-F4C5-403A-A284-58D512D9635C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DB27BA0-F4C5-403A-A284-58D512D9635C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DB27BA0-F4C5-403A-A284-58D512D9635C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DB27BA0-F4C5-403A-A284-58D512D9635C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBEADF76-2421-4597-B98E-D096DC5E5462}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBEADF76-2421-4597-B98E-D096DC5E5462}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBEADF76-2421-4597-B98E-D096DC5E5462}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBEADF76-2421-4597-B98E-D096DC5E5462}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F404B816-798B-470A-BC52-E4D1C2A7089B}
+	EndGlobalSection
+EndGlobal

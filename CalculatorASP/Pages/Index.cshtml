@@ -1,0 +1,37 @@
+﻿@page
+@model IndexModel
+
+@if(Model.Result != null)
+{
+    <p class="text-success">@Model.Result</p>
+}
+@if(Model.Error != null)
+{
+    <p class="text-danger">@Model.Error</p>
+}
+
+<form method= "post">
+    <div class="mp-3">
+    <label for="a">First number:</label>
+    <input class="form-control" type = "number" name="a" />
+    </div>
+
+    <div class="mp-3">
+    <label for="b">Second number:</label>
+    <input class="form-control" type="number" name="b" />
+    </div>
+
+    <div class="mb-3">
+    <label for="operation">Operation</label>
+    <select class="form-control" name="operation">
+        <option value = "+">Add</option>
+        <option value = "-">Substaction</option>
+        <option value = "*">Multiplication</option>
+        <option value = "/">Division</option>
+    </select>
+    </div>
+
+    <div class="mp-3">
+    <button type ="submit">[Solve]</button>
+    </div>
+</form>
