@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace ASPrazorpages.Pages.Shared
+namespace ASPrazorpages.Pages
 {
-    public class aboutModel : PageModel
+    public class AboutModel : PageModel
     {
         public void OnGet()
         {
