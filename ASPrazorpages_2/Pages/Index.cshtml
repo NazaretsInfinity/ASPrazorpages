@@ -1,0 +1,18 @@
+﻿@page 
+<!--indicates that this file is a page-->
+@using ASPrazorpages_2.Services
+@model IndexModel
+
+@inject IGreetingService greetingService
+
+
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Random number: @(new Random().Next())</h1>
+    <p>
+        @greetingService.GetWelcomeMessage()
+    </p> 
+</div>

@@ -1,7 +1,7 @@
-using ASPrazorpages.Services;
-using ASPrazorpages.Services.Implementations;
+using ASPrazorpages_2.Services;
+using ASPrazorpages_2.Services.implementations;
 
-namespace ASPrazorpages
+namespace ASPrazorpages_2
 {
     public class Program
     {
@@ -11,7 +11,8 @@ namespace ASPrazorpages
 
             // Add services to the container.
             builder.Services.AddRazorPages();
-            builder.Services.AddSingleton<IAddressService, AddressService>(); 
+
+            builder.Services.AddScoped<IGreetingService, GreetingService>(); // registering custom service(one we created)
 
 
             var app = builder.Build();
@@ -25,13 +26,13 @@ namespace ASPrazorpages
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseStaticFiles(); // for www.root
 
             app.UseRouting();
 
             app.UseAuthorization();
 
-            app.MapRazorPages();
+            app.MapRazorPages(); //matching routes and files
 
             app.Run();
         }

@@ -1,15 +1,24 @@
 ﻿@page
 @model ASPrazorpages.Pages.RestaurantAddressesModel
 
+@using ASPrazorpages.Models
+@using ASPrazorpages.Services
 
-<h1 class="text-center display-3" style="color:palegoldenrod; font-family: 'Comic Sans MS';">  ✿.We’re opened!.✿  </h1>
-<hr/>
+@inject IAddressService addressService
+
+
+
+<h1 class="text-center display-3" style="color:palegoldenrod; font-family: 'Comic Sans MS';">  ✿.We’re opened!.✿  </h1> 
+<hr/> 
+
 <ul style="font-size:2.5rem; font-family: 'Comic Sans MS'; color: pink;">
-	<li>Blackthorn Vein Lane</li>
-	<li>The Waning Moon Suite (Black Lotus Tower, 13th Floor)</li>
-	<li>The Bloodthorn Asylum</li>
-	<li>The Blackened Rose Orphanage</li>
+    @foreach (RestaurantAddresses address in addressService.GetAllAdrresses())
+    {
+        <li>c. @address.City, st. @address.Street, n. @address.FacilityIndex</li>
+    }
 </ul>
-<div class="text-center">
-	<img src="https://i.pinimg.com/736x/9a/a3/3e/9aa33e414e2e2c10f4bff13b6f227edf.jpg" class="img-fluid" />
-</div>
+
+
+<div class="text-center"> 
+ 	<img src="https://i.pinimg.com/736x/9a/a3/3e/9aa33e414e2e2c10f4bff13b6f227edf.jpg" class="img-fluid" /> 
+</div> 
