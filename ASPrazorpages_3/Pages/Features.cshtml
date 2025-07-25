@@ -1,0 +1,57 @@
+﻿@page
+@model ASPrazorpages_3.Pages.FeaturesModel
+
+<p>
+	<b>Number:</b> @Request.Query["pageNumber"]
+	<br />
+	<b>Sort:</b> @Request.Query["sortMethod"]
+
+	@*Request query takes values of specified keys(pageNumber and sortMethod) FROM URL*@
+	@*/features?pageNumber=5&sortMethod=asc   like from here it'll output '5' and 'asc'*@
+
+	@if (Model.Names.Length > 0)
+	{
+		<ol>
+			@foreach(string name in Model.Names)
+			{
+				<li>@name</li>
+			}
+		</ol>
+	}
+
+
+	@if(Model.Person.Firstname !=null)
+	{
+		<hr />
+		<b>Name:</b> @Model.Person.Firstname<br />
+		<b>Surname:</b> @Model.Person.Lastname
+	}
+
+
+	@if(Model.People.Length>0)
+	{
+		<ol>
+			@foreach(Person person in Model.People)
+			{
+				<li>
+					<b>Name:</b> @person.Firstname<br />
+					<b>Lastname:</b> @(person.Lastname ?? "No data")
+				</li>
+			}
+		</ol>
+	}
+
+
+	@if(Model.Dictionary.Count > 0)
+	{
+		<ol>
+			@foreach(KeyValuePair<string,string> pair in Model.Dictionary)
+			{
+				<li>
+					<b>Key:</b> @pair.Key<br />
+					<b>Value:</b> @pair.Value
+				</li>
+			}
+		</ol>
+	}
+</p>

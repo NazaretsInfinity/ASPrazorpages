@@ -1,0 +1,33 @@
+﻿@page
+@model ASPrazorpages_3.Pages.FeedbackModel
+
+
+<h1>Feedback</h1>
+<hr />
+@if(Model.Message!=null)
+{
+	<div class="alert alert-success">
+		@Model.Message
+	</div>	
+}
+
+<form method="POST">
+	<div class="mb-3">
+	<label class="form-label" for="FisrtName">Your name: </label>
+	<input class="form-control" type="text" name="FirstName"/>
+	</div>
+	
+	<div class="mb-3">
+	<label class="form-label"  for="LasttName">Your surname: </label>
+	<input class="form-control" type="text" name="LastName" />
+	</div>
+
+	<div class="mb-3">
+	<label class="form-label" for="Text">your text: </label>
+    <textarea class="form-control" name="Text"></textarea>
+	</div>
+
+	@*<input type="submit" value=""/>*@
+
+	<button class="btn btn-primary" type="submit">Send</button>
+</form>
