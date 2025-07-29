@@ -3,4 +3,19 @@
 
 @inject ITaskService taskService
 
+@foreach(UserTask task in taskService.GetTasks())
+{
+	<div class="card mb-3">
+		<div class="card-header">
+			<i class="bi bi-clock"></i>
+			<span>Created at: @task.CreatedAt.ToString("dd/mm/yy hh:mm")</span>
+		</div>
+		<div class="card-body">
+			<p class="card-title fs-5">@task.Title</p>
+			<p class="card-text">
+				@(task.Description ?? "No description")
+			</p>
+		</div>
+	</div>
+}
 
