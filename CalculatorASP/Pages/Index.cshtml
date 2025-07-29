@@ -10,10 +10,10 @@
     <p class="text-danger">@Model.Error</p>
 }
 
-<form method= "post">
+<form method= "POST">
     <div class="mp-3">
-    <label for="a">First number:</label>
-    <input class="form-control" type = "number" name="a" />
+    <label asp-for="FirstNumber">First number:</label>
+    <input class="form-control" type = "number" name="a" asp-for="FirstNumber" />
     </div>
 
     <div class="mp-3">

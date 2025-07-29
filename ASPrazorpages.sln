@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPrazorpages_2", "ASPrazor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPrazorpages_3", "ASPrazorpages_3\ASPrazorpages_3.csproj", "{D6ED7AAD-7A94-4FB0-A0BB-99B40B9B7AEC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPrazorpages_4", "ASPrazorpages_4\ASPrazorpages_4.csproj", "{A1C74A4C-95BF-4EED-90B7-9105E3ED51A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoListASP", "TodoListASP\TodoListASP.csproj", "{7E7198CC-8870-439F-A88D-861A75B298AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{D6ED7AAD-7A94-4FB0-A0BB-99B40B9B7AEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6ED7AAD-7A94-4FB0-A0BB-99B40B9B7AEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6ED7AAD-7A94-4FB0-A0BB-99B40B9B7AEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1C74A4C-95BF-4EED-90B7-9105E3ED51A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1C74A4C-95BF-4EED-90B7-9105E3ED51A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1C74A4C-95BF-4EED-90B7-9105E3ED51A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1C74A4C-95BF-4EED-90B7-9105E3ED51A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E7198CC-8870-439F-A88D-861A75B298AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E7198CC-8870-439F-A88D-861A75B298AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E7198CC-8870-439F-A88D-861A75B298AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E7198CC-8870-439F-A88D-861A75B298AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

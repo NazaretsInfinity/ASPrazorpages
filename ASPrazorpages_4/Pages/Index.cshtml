@@ -1,0 +1,15 @@
+﻿@page
+@model IndexModel
+@{
+    Dictionary<string, string> keyValues = new Dictionary<string, string>()
+    {
+        {"name", "Tom"},
+        {"id", "123"}
+    };
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <a asp-area="Admin" asp-page="/Index"> go to main page in admin</a>
+</div>

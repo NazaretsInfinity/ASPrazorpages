@@ -1,0 +1,26 @@
+﻿@page
+@model CalculatorASP.Pages.SignInModel
+
+@if (Model.Message !=null)
+{
+	<p class="alert alert-success">
+		@Model.Message
+	</p>
+}
+<form method="POST">
+	<div class="mb-3">
+		<label class="form-label" asp-for="AuthData.FirstName">Name:</label>
+		<input class="form-control" asp-for="AuthData.FirstName"/>
+		<span class ="text-danger" asp-validation-for="AuthData.FirstName"></span>
+
+		<label class="form-label" asp-for="AuthData.Email">Email:</label>
+		<input class="form-control" asp-for="AuthData.Email"/>
+		<span class="text-danger" asp-validation-for="AuthData.Email"></span>
+
+		<label class="form-label" asp-for="AuthData.Password">Password:</label>
+		<input class="form-control" asp-for="AuthData.Password"/>
+		<span class="text-danger" asp-validation-for="AuthData.Password"></span>
+
+		<button class="btn btn-primary mt-3">Sign in</button>
+	</div>
+</form>

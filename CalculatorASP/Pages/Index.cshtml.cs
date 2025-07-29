@@ -8,37 +8,47 @@ namespace CalculatorASP.Pages
         public string? Result { get; private set; }
         public string? Error { get;  private set; }
 
-        public void OnPost(decimal? a, decimal? b, string? operation)
+        [BindProperty(Name ="a")]
+        public decimal? FirstNumber {  get; set; }
+
+        [BindProperty(Name ="b")]
+        public decimal? SecondNumber { get; set; }
+
+        [BindProperty(Name ="operation", SupportsGet = true)]
+        public string? Operation { get; set; }
+
+
+        public void OnPost()
         {
-            if (a == null)
+            if (FirstNumber == null)
             {
                 Error = "Incorrect input: first number";
                 return;
             }
-            if(b == null) 
+            if(SecondNumber == null) 
             {
                 Error = "Incorrect input: second number";
                 return;
             }
 
-            switch (operation)
+            switch (Operation)
             {
                 case "+": 
-                    Result = $"{a}+{b} = {a+b}";
+                    Result = $"{FirstNumber}+{SecondNumber} = {FirstNumber+SecondNumber}";
                     break;
                 case "-":
-                    Result = $"{a}-{b} = {a - b}";
+                    Result = $"{FirstNumber}-{SecondNumber} = {FirstNumber - SecondNumber}";
                     return;
                 case "*":
-                    Result = $"{a}*{b} = {a * b}";
+                    Result = $"{FirstNumber}*{SecondNumber} = {FirstNumber * SecondNumber}";
                     break;
                 case "/":
-                    if(b == 0)
+                    if(SecondNumber == 0)
                     {
                         Error = "Can't divide by ZERO";
                         break;
                     }
-                    Result = $"{a}/{b} = {a / b}";
+                    Result = $"{FirstNumber}/{SecondNumber} = {FirstNumber / SecondNumber}";
                     break;
                 default:
                     Error = "Incorrect operation";
