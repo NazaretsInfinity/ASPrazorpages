@@ -3,19 +3,93 @@
 
 @inject ITaskService taskService
 
+@*Container fluid - means it takes 100% of free area*@
+<div class="container-fluid p-0 mb-3 border-bottom">
+	<button class="btn btn-primary new-task-button mb-2">
+		<i class="bi bi-plus-circle"></i>
+		new task
+	</button>
+</div>
+
+@{
+
+	string newTaskFormStyle = !Model.ShowNewTaskForm ? "display: none;" : "";
+}
+
+@*Display: none - means the form is invisible(and doesn't take place on the page), but it will appear\dissapear on toggle we added in script*@
+<form class="new-task-form" method="POST" style=@newTaskFormStyle>
+	<div class="mb-3">
+		<label class="form-label" asp-for="Title">Task name: </label>
+		<input class="form-control" asp-for="Title"/>
+		<span class="text-danger" asp-validation-for="Title"></span>
+	</div>
+
+	<div class="mb-3">
+		<label class="form-label" asp-for="Description">Task description: </label>
+		<textarea class="form-control" rows="3" asp-for="Description"></textarea>
+		<span class="text-danger" asp-validation-for="Description"></span>
+	</div>
+
+	<div class="mb-3">
+		<button type="submit" class="btn btn-primary">
+			<i class="bi bi-plus-circle me-2"></i>
+			Create
+		</button>
+	</div>
+
+</form>
+
 @foreach(UserTask task in taskService.GetTasks())
 {
+	string statusCircleClass = task.IsDone ? "text-success" : "text-danger"; 
+
 	<div class="card mb-3">
-		<div class="card-header">
-			<i class="bi bi-clock"></i>
-			<span>Created at: @task.CreatedAt.ToString("dd/mm/yy hh:mm")</span>
+		<div class="card-header d-flex align-items-center">
+			<i class="bi bi-clock me-1"></i>
+			<span>
+				Created at: @task.CreatedAt.ToString("dd/mm/yy hh:mm")
+				<i class="bi bi-circlebi-0-circle-fill ms-2 me-1 @statusCircleClass"></i>
+				@(task.IsDone ? "Completed" : "Incompleted")
+			</span>
 		</div>
 		<div class="card-body">
 			<p class="card-title fs-5">@task.Title</p>
 			<p class="card-text">
-				@(task.Description ?? "No description")
+				@if(task.Description != null)
+				{
+					<text>@task.Description</text>
+				}
+				else
+				{
+					<i class="text-muted">no description</i>
+				}
 			</p>
 		</div>
+		<div class="card-footer d-flex flex-row-reverse gap-2">
+			@if(!task.IsDone)
+			{
+				<a class="btn btn-success" asp-page-handler="ChangeTaskStatus" asp-route-taskId="@task.Id">
+					finished
+				</a>
+			}
+			else
+			{
+			<a class="btn btn-danger">
+				Not finished
+			</a>	
+			}
+		</div>
 	</div>
+
+}
+
+
+@section Scripts
+{
+<script>
+	$('.new-task-button').on('click', ()=> {
+		$('.new-task-form').toggle();
+	});
+</script>
 }
 
