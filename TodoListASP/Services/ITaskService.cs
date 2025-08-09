@@ -7,6 +7,7 @@ namespace TodoListASP.Services
         List<UserTask> GetTasks();
 
         void CreateTask(string name, string? description);
+        void DeleteTask(int id);   
 
         UserTask? GetTaskById(int id);
         void InvertTaskStatus(int id);

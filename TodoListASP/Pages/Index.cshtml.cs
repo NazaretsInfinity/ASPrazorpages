@@ -24,8 +24,6 @@ namespace TodoListASP.Pages
         [BindProperty]
         [StringLength(256,ErrorMessage ="Can't contain more than 256 characters")]
 
-
-
         public string? Description { get; set; }
 
         public IActionResult OnPost()
@@ -45,6 +43,12 @@ namespace TodoListASP.Pages
         public IActionResult OnGetChangeTaskStatus(int taskId)
         {
             _taskService.InvertTaskStatus(taskId);
+            return RedirectToPage("/Index");
+        }
+
+        public IActionResult OnGetDeleteTask(int taskId)
+        {
+            _taskService.DeleteTask(taskId);
             return RedirectToPage("/Index");
         }
     }

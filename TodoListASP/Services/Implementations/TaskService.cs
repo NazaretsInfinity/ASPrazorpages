@@ -28,6 +28,33 @@ namespace TodoListASP.Services.Implementations
             _tasks.Add(task);
         }
 
+        public void DeleteTask(int id)
+        {
+
+            #region foreach problema
+            //foreach (UserTask task in _tasks)   //first loop will be here!
+            //    if(task.Id == id)
+            //    {
+            //        _tasks.Remove(task); //second loop will be here! cause programm doesn't know where task is placed exactly 
+            //        break;
+            //    } 
+
+
+            #endregion
+
+            //here we have only one loop, cause we remove via the index of element
+            //we treat list as an array(because it kinda is)
+            for(int i = 0; i < _tasks.Count; ++i)
+            {
+                UserTask task = _tasks[i];
+                if(task.Id == id)
+                {
+                    _tasks.RemoveAt(i);
+                    break; // neccessity( you modify list - it won't be same, therefore foreach loop will crush)
+                }
+            }
+        }
+
         public UserTask? GetTaskById(int id)
         {
             foreach (var task in _tasks)
