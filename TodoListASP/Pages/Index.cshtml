@@ -2,6 +2,12 @@
 @model IndexModel
 
 @inject ITaskService taskService
+@if(Model.ErrorMessage != null)
+{	
+<div class="alert alert-danger">
+	<span></span>
+</div>
+}
 
 @*Container fluid - means it takes 100% of free area*@
 <div class="container-fluid p-0 mb-3 border-bottom">

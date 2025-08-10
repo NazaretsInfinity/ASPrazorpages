@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
+using TodoListASP.Exceptions;
 using TodoListASP.Services;
 
 namespace TodoListASP.Pages
@@ -15,6 +16,10 @@ namespace TodoListASP.Pages
         }
 
         public bool ShowNewTaskForm { get; set; }
+
+        [BindProperty(Name = "Error", SupportsGet = true)]
+        public string? ErrorMessage { get; set; }
+
 
         [BindProperty]
         [Required(ErrorMessage = "Field is empty")]
@@ -42,7 +47,15 @@ namespace TodoListASP.Pages
 
         public IActionResult OnGetChangeTaskStatus(int taskId)
         {
-            _taskService.InvertTaskStatus(taskId);
+            try
+            {
+                _taskService.InvertTaskStatus(taskId);
+            }
+            catch(TaskNotFoundException)
+            {
+            return RedirectToPage("/Index", new {error = "Couldn't find task"});
+            }
+            
             return RedirectToPage("/Index");
         }
 

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 using TodoListASP.Models;
+using TodoListASP.Repository;
 using TodoListASP.Services;
 
 namespace TodoListASP.Pages
@@ -9,8 +10,10 @@ namespace TodoListASP.Pages
     public class EditTaskModel : PageModel
     {
         private readonly ITaskService _taskService;
-        public EditTaskModel(ITaskService taskService)
+        private readonly ITaskRepository _taskRepository;
+        public EditTaskModel(ITaskService taskService, ITaskRepository taskRepository)
         {
+            _taskRepository = taskRepository;
             _taskService = taskService;
         }
 
@@ -45,6 +48,7 @@ namespace TodoListASP.Pages
             task.CreatedAt= CreatedAt;
             task.IsDone= IsDone;
 
+            _taskRepository.SaveChanges();
             return RedirectToPage("/Index");
         }
 

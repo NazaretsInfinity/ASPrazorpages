@@ -1,37 +1,36 @@
 ﻿using TodoListASP.Models;
 using TodoListASP.Exceptions;
+using TodoListASP.Repository;
 
 
 namespace TodoListASP.Services.Implementations
 {
     public class TaskService : ITaskService
     {
-        private readonly List<UserTask> _tasks;
+        private readonly ITaskRepository _taskRepository;
 
-        private int _nextTaskId;
 
-        public TaskService()
+        public TaskService(ITaskRepository taskRepository)
         {
-            _tasks = new List<UserTask>();
-            _nextTaskId = 1;
+            _taskRepository = taskRepository;
         }
-        public List<UserTask> GetTasks() => _tasks;
+        public List<UserTask> GetTasks() => _taskRepository.GetAll();
 
         public void CreateTask(string name, string? description)
         {
             UserTask task = new UserTask()
             {
-                Id = _nextTaskId++,
                 Title = name,
                 Description = description
             };
-            _tasks.Add(task);
+            _taskRepository.Create(task);
         }
 
         public void DeleteTask(int id)
         {
 
-            #region foreach problema
+#if oldbones
+
             //foreach (UserTask task in _tasks)   //first loop will be here!
             //    if(task.Id == id)
             //    {
@@ -40,29 +39,23 @@ namespace TodoListASP.Services.Implementations
             //    } 
 
 
-            #endregion
-
             //here we have only one loop, cause we remove via the index of element
             //we treat list as an array(because it kinda is)
-            for(int i = 0; i < _tasks.Count; ++i)
+            for (int i = 0; i < _tasks.Count; ++i)
             {
                 UserTask task = _tasks[i];
-                if(task.Id == id)
+                if (task.Id == id)
                 {
                     _tasks.RemoveAt(i);
                     break; // neccessity( you modify list - it won't be same, therefore foreach loop will crush)
                 }
-            }
+            } 
+#endif
+
+            _taskRepository.Delete(id);
         }
 
-        public UserTask? GetTaskById(int id)
-        {
-            foreach (var task in _tasks)
-            {
-                if (task.Id == id) return task;
-            }
-            return null;
-        }
+        public UserTask? GetTaskById(int id) => _taskRepository.GetById(id);
 
         public void InvertTaskStatus(int id)
         {
@@ -70,6 +63,8 @@ namespace TodoListASP.Services.Implementations
             if (task == null)
                 throw new TaskNotFoundException(id);
             task.IsDone = !task.IsDone;
+
+            _taskRepository.SaveChanges();
         }
     }
 }
