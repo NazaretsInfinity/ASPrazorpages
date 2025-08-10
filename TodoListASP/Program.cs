@@ -2,6 +2,7 @@ using TodoListASP.Services;
 using TodoListASP.Services.Implementations;
 using TodoListASP.Repository;
 using TodoListASP.Repository.Implementations;
+using TodoListASP.Models;
 
 namespace TodoListASP
 {
@@ -13,8 +14,8 @@ namespace TodoListASP
 
             // Add services to the container.
             builder.Services.AddRazorPages();
-            builder.Services.AddSingleton<ITaskRepository, TaskRepository>();
-            builder.Services.AddSingleton<ITaskService, TaskService>();    
+            builder.Services.AddScoped<ITaskService, TaskService>();    
+            builder.Services.AddScoped<IRepository<UserTask>, TaskRepository>();
 
             var app = builder.Build();
 

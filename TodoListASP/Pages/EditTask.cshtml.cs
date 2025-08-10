@@ -10,8 +10,8 @@ namespace TodoListASP.Pages
     public class EditTaskModel : PageModel
     {
         private readonly ITaskService _taskService;
-        private readonly ITaskRepository _taskRepository;
-        public EditTaskModel(ITaskService taskService, ITaskRepository taskRepository)
+        private readonly IRepository<UserTask> _taskRepository;
+        public EditTaskModel(ITaskService taskService, IRepository<UserTask> taskRepository)
         {
             _taskRepository = taskRepository;
             _taskService = taskService;
@@ -60,7 +60,7 @@ namespace TodoListASP.Pages
                 return RedirectToPage("/Index");
 
             Title = task.Title; 
-            Description =task.Description;
+            Description = task.Description;
             IsDone = task.IsDone;
             CreatedAt = task.CreatedAt;
             return Page();
